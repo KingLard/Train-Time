@@ -37,12 +37,25 @@ var minutesAway = 1;
     firstTrain = $("#first-train").val().trim();
     frequency = $("#frequency").val().trim();
 
-    console.log(trainName);
-    console.log(destination);
-    console.log(firstTrain);
-    console.log(frequency);
+    database.ref().push({
+        name: trainName,
+        destination: destination,
+        firstTrain: firstTrain,
+        frequency: frequency
+      });
 
-   
 
+    });
 
-  $("table").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().firstTrain + "</td><td>" + frequency + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td></tr>");
+    database.ref().on("child_added", function(snapshot) {
+        
+        
+        console.log(snapshot.val().name);
+        console.log(snapshot.val().destination);
+        console.log(snapshot.val().firstTrain);
+        console.log(snapshot.val().frequency);
+  
+
+    $("table").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().frequency + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td></tr>");
+
+    });
