@@ -13,7 +13,6 @@
   <!-- Stylesheet Link Here -->
   <link rel="stylesheet" href="assets/styles.css">
 
-  <!-- Firebase References Here-->
 
 </head>
 <body>
@@ -52,22 +51,22 @@
         <form>
           <div class="form-group">
             <label for="formGroupExampleInput">Train Name</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+            <input type="text" class="form-control" id="train-name" placeholder="Example input placeholder">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Destination</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+            <input type="text" class="form-control" id="destination" placeholder="Another input placeholder">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput">First Train Time</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+            <input type="text" class="form-control" id="first-train" placeholder="Example input placeholder">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Frequency</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+            <input type="text" class="form-control" id="frequency" placeholder="Another input placeholder">
           </div>
           <div class="form-group">
-            <input id="submit" class="btn-primary" type="submit">
+            <input id="submit" class="submit" type="submit">
           </div>
         </form>
       </div>
@@ -102,11 +101,24 @@
       
     
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery.js"></script>
+  
 
-  <!-- JS Script Tag -->
-  <script src="assets/app.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery.js"></script>
+
+<!-- JS Script Tag -->
+<script src="assets/app.js"></script>
+
+
+
 </body>
 
 </html>
