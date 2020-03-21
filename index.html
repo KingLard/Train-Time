@@ -13,7 +13,8 @@
   <!-- Stylesheet Link Here -->
   <link rel="stylesheet" href="assets/styles.css">
 
-
+  <!-- momentjs script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -31,13 +32,16 @@
     </div>
     <div class="card-body">
       <table>
-        <tr>
+        <thead>
             <th>Train Name</th>
             <th>Destination</th>
             <th>Frequency (min)</th>
             <th>Next Arrival</th>
             <th>Minutes Away</th>
-        </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
     </table>
     </div>
   </div>
@@ -58,7 +62,7 @@
             <input type="text" class="form-control" id="destination" placeholder="Destination of Train">
           </div>
           <div class="form-group">
-            <label for="formGroupExampleInput">First Train Time</label>
+            <label for="formGroupExampleInput">First Train Time (HH:mm-military time)</label>
             <input type="text" class="form-control" id="first-train" placeholder="First Train Time">
           </div>
           <div class="form-group">

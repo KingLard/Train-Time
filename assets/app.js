@@ -23,6 +23,9 @@ var minutesAway = 1;
 
 
   var database = firebase.database();
+  var currentTime = moment();
+  console.log("current time :" + currentTime);
+  console.log(moment(currentTime, "X"));
   
 
 
@@ -34,28 +37,46 @@ var minutesAway = 1;
 
     trainName = $("#train-name").val().trim();
     destination = $("#destination").val().trim();
-    firstTrain = $("#first-train").val().trim();
+    trainTime = $("#first-train").val().trim();
     frequency = $("#frequency").val().trim();
 
     database.ref().push({
         name: trainName,
         destination: destination,
-        firstTrain: firstTrain,
+        trainTime: trainTime,
         frequency: frequency
       });
+  });
 
 
-    });
+
+
 
     database.ref().on("child_added", function(snapshot) {
         
         
-        console.log(snapshot.val().name);
-        console.log(snapshot.val().destination);
-        console.log(snapshot.val().firstTrain);
-        console.log(snapshot.val().frequency);
+        var snapTrain = snapshot.val().name;
+        var snapDestination = snapshot.val().destination;
+        var snapTime = snapshot.val().trainTime;
+        var snapFrequency = snapshot.val().frequency;
+
+        var converted = moment(snapTime, "HH:mm").subtract(1, "years");
+        var difference = moment().diff(moment(converted), "minutes");
+        var remainder = difference % snapFrequency;
+        var away = snapFrequency - remainder;
+        var next = moment().add(away, "minutes");
+        next = moment(next).format("HH:mm");
+
+        var newRow = $("<tr>").append(
+            $("<td>").text(snapTrain),
+            $("<td>").text(snapDestination),
+            $("<td>").text(snapFrequency),
+            $("<td>").text(next),
+            $("<td>").text(away)
+        );
+
+        $("tbody").append(newRow);
   
 
-    $("table").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().frequency + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td></tr>");
+        });
 
-    });
